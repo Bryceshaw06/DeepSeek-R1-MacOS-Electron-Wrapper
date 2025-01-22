@@ -21,7 +21,7 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: Build the app
+      - name: Build and package the app
         run: npm run package
 
       - name: Upload build artifacts
