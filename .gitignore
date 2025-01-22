@@ -38,7 +38,7 @@ yarn.lock
 # Ignore macOS specific files
 *.dmg
 *.pkg
-*.icns
+
 
 # Ignore debug and logs
 debug.log
