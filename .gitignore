@@ -1,0 +1,73 @@
+# Ignore OS-specific files
+.DS_Store
+Thumbs.db
+
+# Ignore Node.js dependencies and build artifacts
+node_modules/
+dist/
+out/
+release/
+*.log
+*.pid
+*.seed
+*.pid.lock
+
+# Ignore Electron build files
+.electron-build/
+.electron-cache/
+
+# Ignore environment-specific files
+.env
+.env.local
+.env.development
+.env.production
+
+# Ignore IDE and editor files
+.idea/
+.vscode/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Ignore npm/yarn lock files (optional, depending on your workflow)
+package-lock.json
+yarn.lock
+
+# Ignore macOS specific files
+*.dmg
+*.pkg
+*.icns
+
+# Ignore debug and logs
+debug.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Ignore Electron-packager temporary files
+*.zip
+*.tar.gz
+*.app
+
+# Ignore compiled binaries and executables
+*.exe
+*.bin
+*.dll
+*.so
+*.dylib
+
+# Ignore local development files
+.sass-cache/
+.jekyll-cache/
+.tmp/
+.temp/
+
+# Ignore test and coverage directories
+coverage/
+.nyc_output/
+
+# Ignore Electron Builder cache
+electron-builder-cache/
+electron-builder.yaml
