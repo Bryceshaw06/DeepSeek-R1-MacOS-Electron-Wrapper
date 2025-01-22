@@ -29,3 +29,11 @@ jobs:
         with:
           name: Deepseek-R1-Build
           path: dist/
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v1
+        if: github.ref == 'refs/heads/main'
+        with:
+          files: |
+            dist/*.dmg
+            dist/*.zip
