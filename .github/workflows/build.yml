@@ -30,9 +30,17 @@ jobs:
           name: Deepseek-R1-Build
           path: dist/
 
+      - name: Create Git tag
+        id: tag
+        run: |
+          TAG_NAME="v1.0.0"
+          echo "TAG_NAME=$TAG_NAME" >> $GITHUB_ENV
+          git tag $TAG_NAME
+          git push origin $TAG_NAME
+
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v1
-        if: github.ref == 'refs/heads/main'
         with:
+          tag_name: ${{ env.TAG_NAME }}
           files: |
             dist/*.zip
