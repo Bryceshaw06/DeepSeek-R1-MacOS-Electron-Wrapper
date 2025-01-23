@@ -27,11 +27,20 @@ jobs:
       - name: Build and package the app
         run: npm run package
 
+      - name: Zip the application
+        run: |
+          cd dist/deepseek-r1-app-darwin-arm64
+          zip -r ../../deepseek-r1-app-darwin-arm64.zip deepseek-r1-app.app
+          cd ../deepseek-r1-app-darwin-x64
+          zip -r ../../deepseek-r1-app-darwin-x64.zip deepseek-r1-app.app
+
       - name: Upload build artifacts
         uses: actions/upload-artifact@v3
         with:
           name: Deepseek-R1-Build
-          path: dist/*.zip
+          path: |
+            deepseek-r1-app-darwin-arm64.zip
+            deepseek-r1-app-darwin-x64.zip
 
       - name: Create Git tag
         id: tag
@@ -52,12 +61,22 @@ jobs:
           draft: false
           prerelease: false
 
-      - name: Upload Release Assets
+      - name: Upload Release Assets (arm64)
         uses: actions/upload-release-asset@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: dist/*.zip
-          asset_name: Deepseek-R1-${{ env.TAG_NAME }}.zip
+          asset_path: deepseek-r1-app-darwin-arm64.zip
+          asset_name: deepseek-r1-app-darwin-arm64.zip
+          asset_content_type: application/zip
+
+      - name: Upload Release Assets (x64)
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: deepseek-r1-app-darwin-x64.zip
+          asset_name: deepseek-r1-app-darwin-x64.zip
           asset_content_type: application/zip
