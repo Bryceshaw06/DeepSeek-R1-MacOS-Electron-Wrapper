@@ -8,6 +8,7 @@ on:
 # Workflow-level permissions
 permissions:
   contents: write
+  packages: write
 
 jobs:
   build:
