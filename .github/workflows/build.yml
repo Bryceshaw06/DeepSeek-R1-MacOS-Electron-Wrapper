@@ -42,8 +42,18 @@ jobs:
           git push origin $TAG_NAME
 
       - name: Create GitHub Release
-        uses: softprops/gh-release@v1
+        uses: actions/create-release@v1
+        id: create_release
         with:
-          tag: ${{ env.TAG_NAME }}
-          files: |
-            dist/*.zip
+          tag_name: ${{ env.TAG_NAME }}
+          release_name: Release ${{ env.TAG_NAME }}
+          draft: false
+          prerelease: false
+
+      - name: Upload Release Assets
+        uses: actions/upload-release-asset@v1
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: dist/*.zip
+          asset_name: Deepseek-R1-${{ env.TAG_NAME }}.zip
+          asset_content_type: application/zip
