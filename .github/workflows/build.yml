@@ -5,10 +5,8 @@ on:
     branches:
       - main
 
-# Workflow-level permissions
 permissions:
   contents: write
-  packages: write
 
 jobs:
   build:
@@ -44,8 +42,8 @@ jobs:
           git push origin $TAG_NAME
 
       - name: Create GitHub Release
-        uses: softprops/action-gh-release@v1
+        uses: softprops/gh-release@v1
         with:
-          tag_name: ${{ env.TAG_NAME }}
+          tag: ${{ env.TAG_NAME }}
           files: |
             dist/*.zip
