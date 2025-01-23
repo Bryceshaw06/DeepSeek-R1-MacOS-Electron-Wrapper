@@ -5,6 +5,11 @@ on:
     branches:
       - main
 
+# Workflow-level permissions
+permissions:
+  contents: write
+  releases: write
+
 jobs:
   build:
     runs-on: macos-latest
@@ -12,8 +17,6 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
-        with:
-          token: ${{ secrets.PAT }}
 
       - name: Set up Node.js
         uses: actions/setup-node@v3
