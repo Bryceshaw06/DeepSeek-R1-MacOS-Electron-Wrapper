@@ -29,20 +29,20 @@ jobs:
 
       - name: Locate and zip the application
         run: |
-          if [ -d "dist/deepseek-r1-app-darwin-arm64/deepseek-r1-app.app" ]; then
+          if [ -d "dist/Deepseek-R1-darwin-arm64/Deepseek-R1.app" ]; then
             echo "Found ARM64 app, zipping..."
-            cd dist/deepseek-r1-app-darwin-arm64
-            zip -r ../../deepseek-r1-app-darwin-arm64.zip deepseek-r1-app.app
+            cd dist/Deepseek-R1-darwin-arm64
+            zip -r ../../Deepseek-R1-darwin-arm64.zip Deepseek-R1.app
             cd ../..
           else
             echo "ARM64 build directory not found!"
             exit 1
           fi
-
-          if [ -d "dist/deepseek-r1-app-darwin-x64/deepseek-r1-app.app" ]; then
+      
+          if [ -d "dist/Deepseek-R1-darwin-x64/Deepseek-R1.app" ]; then
             echo "Found x64 app, zipping..."
-            cd dist/deepseek-r1-app-darwin-x64
-            zip -r ../../deepseek-r1-app-darwin-x64.zip deepseek-r1-app.app
+            cd dist/Deepseek-R1-darwin-x64
+            zip -r ../../Deepseek-R1-darwin-x64.zip Deepseek-R1.app
             cd ../..
           else
             echo "x64 build directory not found!"
